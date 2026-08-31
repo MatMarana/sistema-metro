@@ -9,6 +9,18 @@ print(estacao2.nome)
 
 linha_metro = Grafo()
 
+linha_metro.mostrar_linha()
+
 linha_metro.adicionar_estacao(estacao1)
 linha_metro.adicionar_estacao(estacao2)
+
+linha_metro.mostrar_linha()
+
+linha_metro.adicionar_ligacoes(estacao1, estacao2)
+linha_metro.adicionar_ligacoes(estacao1, estacao2)
+
+linha_metro.mostrar_linha()
+
+linha_metro.remover_ligacoes(estacao1, estacao2)
+
 linha_metro.mostrar_linha()

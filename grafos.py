@@ -19,8 +19,8 @@ class Grafo:
             self.quantidade_estacoes -= 1
 
     def __verifica_conexao(self, estacao1, estacao2):
-        for estacoes in self.linha_metro[estacao1]:
-            if estacao2 == estacoes:
+        for estacao in self.linha_metro[estacao1]:
+            if estacao2.nome == estacao:
                 return True
 
         return False
@@ -38,8 +38,8 @@ class Grafo:
             print(f"Conexão entre {estacao1.nome} e {estacao2.nome} já existe")
             return
     
-        self.linha_metro[estacao1].append(estacao2)
-        self.linha_metro[estacao2].append(estacao1)
+        self.linha_metro[estacao1].append(estacao2.nome)
+        self.linha_metro[estacao2].append(estacao1.nome)
 
     def remover_ligacoes(self, estacao1, estacao2):
         if estacao1 not in self.linha_metro.keys():
@@ -51,10 +51,13 @@ class Grafo:
         if not self.__verifica_conexao(estacao1, estacao2):
             return
 
-        self.linha_metro[estacao1].remove(estacao2)
-        self.linha_metro[estacao2].remove(estacao1)
+        self.linha_metro[estacao1].remove(estacao2.nome)
+        self.linha_metro[estacao2].remove(estacao1.nome)
 
 
     def mostrar_linha(self):
+        print(f"Estações: {self.quantidade_estacoes}")
         for estacao, conexoes in self.linha_metro.items():
-            print(f"Estação {estacao.nome}: {conexoes}")
+            print(f"Estação {estacao.nome}:{conexoes}")
+
+
