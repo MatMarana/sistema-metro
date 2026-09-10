@@ -3,6 +3,7 @@ from vertice import Vertice
 class Grafo:
     def __init__(self):
         self.quantidade_estacoes = 0
+        self.quantidade_ligacoes = 0
         self.linha_metro = {}
 
     def adicionar_estacao(self, estacao):
@@ -40,6 +41,7 @@ class Grafo:
     
         self.linha_metro[estacao1].append(estacao2.nome)
         self.linha_metro[estacao2].append(estacao1.nome)
+        self.quantidade_ligacoes += 1
 
     def remover_ligacoes(self, estacao1, estacao2):
         if estacao1 not in self.linha_metro.keys():
@@ -53,10 +55,12 @@ class Grafo:
 
         self.linha_metro[estacao1].remove(estacao2.nome)
         self.linha_metro[estacao2].remove(estacao1.nome)
+        self.quantidade_ligacoes -= 1
 
 
     def mostrar_linha(self):
         print(f"Estações: {self.quantidade_estacoes}")
+        print(f"Número de ligações: {self.quantidade_ligacoes}")
         for estacao, conexoes in self.linha_metro.items():
             print(f"Estação {estacao.nome}:{conexoes}")
 
